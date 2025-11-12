@@ -40,7 +40,6 @@ services:
     # 開発中は unrestricted、本番は restricted に変更推奨
     command: ["--access-mode=unrestricted", "--transport=sse"]
     environment:
-      # Compose 内では db ホスト名で到達できます
       DATABASE_URI: postgresql://appuser:secret@postgres:5432/${POSTGRES_DB:-supermarket_db}
     ports:
       - "8000:8000"   # SSE: http://localhost:8000/sse
