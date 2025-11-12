@@ -51,7 +51,10 @@ PostgreSQL 17 をベースにした小売 / スーパーマーケット向けデ
 4. PostgREST からテーブルを参照できます。
 
    ```bash
-   curl "http://localhost:3000/master.products?select=*"
+   curl "http://localhost:3000/products?select=*"
+
+   curl "http://localhost:3000/stock_levels" \
+   -H "Accept-Profile: inventory"
    ```
 
    デフォルト接続情報: `postgresql://appuser:secret@localhost:5432/supermarket_db`
@@ -113,13 +116,13 @@ Claude Desktop の `claude_desktop_config.json` に以下を追加すると、SS
 
 ```bash
 # ログ確認
-docker compose -f compose.yml logs -f postgres
+docker compose logs -f postgres
 
 # サービス停止
-docker compose -f compose.yml down
+docker compose down
 
 # すべてのボリュームも削除
-docker compose -f compose.yml down -v
+docker compose down -v
 ```
 
 ## データのリセット
